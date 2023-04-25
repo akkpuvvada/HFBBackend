@@ -13,9 +13,20 @@ const getUsers = (request, response) => {
       throw error;
     }
     response.status(200).json(results.rows);
-  });
-};
+  })
+}
+
+const getEmployees = (request, response) => {
+  pool.query('SELECT * FROM employee ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  })
+}
 
 module.exports = {
-  getUsers
+  getUsers,
+  getEmployees,
+  pool,
 };

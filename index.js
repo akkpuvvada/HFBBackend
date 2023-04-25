@@ -4,7 +4,8 @@ const app = express()
 const port = 3000
 require('dotenv').config()
 
-const db = require('./queries');
+const {login} = require('./controllers/login')
+const db = require('./models');
 
 app.use(bodyParser.json());
 app.use(
@@ -18,6 +19,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/users', db.getUsers)
+app.post('/login', login)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
