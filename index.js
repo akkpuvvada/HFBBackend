@@ -5,6 +5,7 @@ const port = 3000
 require('dotenv').config()
 
 const {login} = require('./controllers/login')
+const {partnerLogin} = require('./controllers/partnerLogin')
 const db = require('./models');
 
 app.use(bodyParser.json());
@@ -20,6 +21,7 @@ app.get('/', (request, response) => {
 
 app.get('/users', db.getUsers)
 app.post('/login', login)
+app.post('/partner-login', partnerLogin)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
