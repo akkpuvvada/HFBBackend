@@ -7,7 +7,10 @@ require('dotenv').config()
 const {login} = require('./controllers/login')
 const {partnerLogin} = require('./controllers/partner/partnerLogin')
 const {partnerRegister} = require('./controllers/partner/partnerRegister')
+
 const {listFood} = require('./controllers/food/listFood')
+const {listEvents} = require('./controllers/events/listEvents')
+
 const db = require('./models');
 
 app.use(bodyParser.json());
@@ -23,6 +26,7 @@ app.get('/', (request, response) => {
 
 app.get('/users', db.getUsers)
 app.get('/list-food', listFood)
+app.get('/list-events', listEvents)
 app.post('/login', login)
 app.post('/partner-login', partnerLogin)
 app.post('/partner-register', partnerRegister)
