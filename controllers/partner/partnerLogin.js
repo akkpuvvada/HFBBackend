@@ -1,13 +1,13 @@
 const bcrypt = require("bcrypt")
-const model = require("../models")
+const model = require("../../models")
 const jwt = require("jsonwebtoken");
 
 const client = model.pool
 
-exports.login = async (req, response) => {
+exports.partnerLogin = async (req, response) => {
   const { email, password } = req.body
   try {
-    const data = await client.query(`SELECT * FROM employee WHERE email= $1;`, [email])
+    const data = await client.query(`SELECT * FROM partner_agency WHERE email= $1;`, [email])
     const user = data?.rows;
     if (user.length === 0) {
       response.status(400).json({
