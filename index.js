@@ -6,12 +6,15 @@ require('dotenv').config()
 
 const {login} = require('./controllers/login')
 const {partnerLogin} = require('./controllers/partner/partnerLogin')
-const {partnerRegister} = require('./controllers/partner/partnerRegister')
-const {listPartners} = require('./controllers/partner/listPartners')
-const { getPartnerById } = require('./controllers/partner/getPartnerById')
 
+const {partnerRegister} = require('./controllers/partner/partnerRegister')
+
+const {listPartners} = require('./controllers/partner/listPartners')
 const {listFood} = require('./controllers/food/listFood')
 const {listEvents} = require('./controllers/events/listEvents')
+const { listVolunteers } = require('./controllers/volunteer/listVolunteers')
+
+const { getPartnerById } = require('./controllers/partner/getPartnerById')
 
 const db = require('./models');
 
@@ -31,6 +34,7 @@ app.get('/list-food', listFood)
 app.get('/list-events', listEvents)
 app.get('/list-partners', listPartners)
 app.get('/list-partner', getPartnerById)
+app.get('/list-volunteers', listVolunteers)
 app.post('/login', login)
 app.post('/partner-login', partnerLogin)
 app.post('/partner-register', partnerRegister)
