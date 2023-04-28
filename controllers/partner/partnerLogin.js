@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt")
-const model = require("../models")
+const model = require("../../models")
 const jwt = require("jsonwebtoken");
 
 const client = model.pool
