@@ -24,6 +24,7 @@ exports.login = async (req, response) => {
             {
               email: email,
               userId: user[0].id,
+              userName: user[0].name,
             },
             process.env.SECRET_KEY
           )
