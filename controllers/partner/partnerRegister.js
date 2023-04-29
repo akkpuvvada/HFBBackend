@@ -6,8 +6,7 @@ const client = model.pool
 exports.partnerRegister = async (req, response) => {
   try {
     const body = req.body
-    // const userId = utils.randomNumber(999, 2000)
-    const userId = '13410'
+    const userId = utils.randomNumber(999, 2000)
     const query_response = await client.query(`INSERT INTO partner_agency VALUES ('${userId}', '${body.address}', '${body.org_name}', '${body.people_count}', '${body.email}', '${body.type}', '${body.phone_number}', crypt('${body.password}', gen_salt('bf')), '${body.username}');`)
     if (query_response.rowCount === 1) {
       response.status(200).json({
