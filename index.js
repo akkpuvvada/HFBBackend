@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+var cors = require('cors')
 const app = express()
 const port = 3000
 require('dotenv').config()
@@ -14,12 +15,16 @@ const {listFood} = require('./controllers/food/listFood')
 const {listEvents} = require('./controllers/events/listEvents')
 const { listVolunteers } = require('./controllers/volunteer/listVolunteers')
 const { listInventory } = require('./controllers/food/listInventory')
+const { communityList } = require('./controllers/community/communityList')
 
 const { getPartnerById } = require('./controllers/partner/getPartnerById')
 const { addFoodItem } = require('./controllers/food/addFoodItem')
 const { createEvent } = require('./controllers/events/createEvent')
+const { makeDonation } = require('./controllers/donation/makeDonation')
 
 const db = require('./models');
+
+app.use(cors())
 
 app.use(bodyParser.json());
 app.use(
@@ -42,7 +47,9 @@ app.get('/list-partners', listPartners)
 app.get('/list-partner', getPartnerById)
 app.get('/list-volunteers', listVolunteers)
 app.get('/list-inventory', listInventory)
+app.get('/list-communities', communityList)
 
+app.post('/make-donation', makeDonation)
 app.post('/add-food-item', addFoodItem)
 app.post('/create-event', createEvent)
 app.post('/partner-register', partnerRegister)
