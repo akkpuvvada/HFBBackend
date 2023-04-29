@@ -13,9 +13,11 @@ const {listPartners} = require('./controllers/partner/listPartners')
 const {listFood} = require('./controllers/food/listFood')
 const {listEvents} = require('./controllers/events/listEvents')
 const { listVolunteers } = require('./controllers/volunteer/listVolunteers')
+const { listInventory } = require('./controllers/food/listInventory')
 
 const { getPartnerById } = require('./controllers/partner/getPartnerById')
 const { addFoodItem } = require('./controllers/food/addFoodItem')
+const { createEvent } = require('./controllers/events/createEvent')
 
 const db = require('./models');
 
@@ -39,8 +41,10 @@ app.get('/list-events', listEvents)
 app.get('/list-partners', listPartners)
 app.get('/list-partner', getPartnerById)
 app.get('/list-volunteers', listVolunteers)
+app.get('/list-inventory', listInventory)
 
 app.post('/add-food-item', addFoodItem)
+app.post('/create-event', createEvent)
 app.post('/partner-register', partnerRegister)
 
 app.listen(port, () => {
