@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 var cors = require('cors')
 const app = express()
-const port = 3000
+const port = 3001
 require('dotenv').config()
 
 const {login} = require('./controllers/login')
@@ -24,7 +24,7 @@ const { makeDonation } = require('./controllers/donation/makeDonation')
 
 const db = require('./models');
 
-app.use(cors())
+app.use(cors('*'))
 
 app.use(bodyParser.json());
 app.use(
